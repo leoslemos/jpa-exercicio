@@ -1,25 +1,19 @@
-create database jpa_exercicio;
-use jpa_exercicio;
+CREATE DATABASE jpa_exercicio;
+USE jpa_exercicio;
 
-drop table pessoa;
-drop table empresa;
+CREATE TABLE `empresa` (
+  `id_empresa` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`id_empresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
 
-create table pessoa(
-	id_pessoa int not null auto_increment
-    , nome varchar(45)
-    , sobrenome varchar(45)
-    , id_empresa int not null
-    
-    , primary key (id_pessoa)
-    , foreign key (id_empresa) references empresa (id_empresa)
-);
-
-create table empresa(
-	id_empresa int not null auto_increment
-    , nome varchar(45)
-    
-    , primary key (id_empresa)
-);
-
-select * from pessoa;
-select * from empresa;
+CREATE TABLE `pessoa` (
+  `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `sobrenome` varchar(100) NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `id_empresa` int(11) NOT NULL,
+  PRIMARY KEY (`id_pessoa`),
+  KEY `fk_pessoa_idempresa` (`id_empresa`),
+  CONSTRAINT `fk_pessoa_idempresa` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
