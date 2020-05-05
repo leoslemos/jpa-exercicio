@@ -21,7 +21,7 @@ public class PessoaDAOTest {
         inserirPessoa();
 //        editarPessoa();
 //        apagarPessoa();
-//        localizarPessoa();
+        localizarPessoa();
 
         entityManager.close();
         factory.close();
@@ -34,6 +34,7 @@ public class PessoaDAOTest {
         Pessoa nPessoa = new Pessoa();
         nPessoa.setNome("Rolando");
         nPessoa.setSobrenome("Escadabaixo");
+        nPessoa.setCpf("12345678912");
 
         Empresa nEmpresa = entityManager.find(Empresa.class,1);
         nPessoa.setEmpesa(nEmpresa);
@@ -67,10 +68,11 @@ public class PessoaDAOTest {
 
         entityManager.getTransaction().begin();
 
-        Pessoa nPessoa = entityManager.find(Pessoa.class, 2);
+        Pessoa nPessoa = entityManager.find(Pessoa.class, 1);
 
         System.out.println("Nome: " + nPessoa.getNome());
         System.out.println("Sobrenome: " + nPessoa.getSobrenome());
+        System.out.println("CPF: " + nPessoa.getCpf());
         System.out.println("Empresa: " + nPessoa.getEmpesa().getNome());
     }
 }

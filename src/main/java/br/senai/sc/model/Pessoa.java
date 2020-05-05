@@ -12,6 +12,7 @@ public class Pessoa {
     private Integer idPessoa;
     private String nome;
     private String sobrenome;
+    private String cpf;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa")
@@ -39,6 +40,14 @@ public class Pessoa {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Empresa getEmpesa() {
